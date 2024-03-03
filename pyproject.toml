@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=46.4.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "Brownian-Motion"
+version = "1.0.0"
+authors = ["Muhammed Abdullah Shaikh"]
+description = "Brownian motion Simulation as per JDE Robot python task"
+license = "MIT License"
+keywords = ["brownian", "python", "tkinter"]
+packages = [
+    { include = "python/brownian.py" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.9" 
+numpy = "^1.26.4"
+
+
+[tool.poetry.scripts]
+brownian = "python.brownian:main"
