@@ -32,6 +32,7 @@ extensions = [
         'myst_parser', 
         'sphinx_design',            # for tabs and dropdown
         'sphinx.ext.intersphinx',
+        'sphinxcontrib.youtube'     # for youtube videos
         ]
 
 source_suffix = ['.rst', '.md']
