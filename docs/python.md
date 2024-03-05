@@ -10,6 +10,16 @@ brownian
 
 This is my solution to the [python challenge](https://drive.google.com/file/d/1Mzr-jGvwCpuZoFKmvjXzJxTfjbf2K16w/view) of simulating brownian motion for a robot.
 
+```{raw} html
+<p class="centered">
+  <video width="50%" autoplay muted loop>
+    <!-- <source src="https://drive.google.com/file/d/1OSvqhp7e98E5Dyr5qG3soNnvlr28CHbY/view?usp=sharing" type="video/mp4" /> -->
+    <source src="_static/brownian.mkv" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p>
+```
+
 ## Usage
 
 Download the file [brownian_motion-1.0.0-py3-none-any.whl]() and install it in your Python environment using pip.
