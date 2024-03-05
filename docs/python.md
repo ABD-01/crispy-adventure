@@ -22,7 +22,7 @@ This is my solution to the [python challenge](https://drive.google.com/file/d/1M
 
 ## Usage
 
-Download the file [brownian_motion-1.0.0-py3-none-any.whl]() and install it in your Python environment using pip.
+Download the file [brownian_motion-1.0.0-py3-none-any.whl](https://github.com/ABD-01/crispy-adventure/releases/download/1.0.0/brownian_motion-1.0.0-py3-none-any.whl) and install it in your Python environment using pip. <br> (Visit [releases](https://github.com/ABD-01/crispy-adventure/releases/tag/1.0.0) section if unable to download.)
 
 ```bash
 $ pip install brownian_motion-1.0.0-py3-none-any.whl
