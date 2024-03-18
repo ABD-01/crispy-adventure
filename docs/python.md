@@ -8,7 +8,7 @@ maxdepth: 2
 brownian
 :::
 
-This is my solution to the [python challenge](https://drive.google.com/file/d/1Mzr-jGvwCpuZoFKmvjXzJxTfjbf2K16w/view) of simulating brownian motion for a robot.
+This is my solution to the [python challenge](_static/GSoC-2024%20Python%20test.pdf) of simulating brownian motion for a robot.
 
 ```{raw} html
 <p class="centered">
