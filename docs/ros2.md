@@ -2,6 +2,7 @@
 
 This is my solution to the [ROS2 Challenge](_static/GSoC-2024%20ROS2%20test.pdf) to show my understanding of ROS2.
 
+<!--
 :::{toctree}
 ---
 maxdepth: 2
@@ -11,9 +12,11 @@ Hello! ROS2 is fun <ros2/ros2_is_fun>
 Launch your robot <ros2/laser_scan>
 Navigate your turtlebot <ros2/navigation>
 ::: 
-
+-->
 
 ## 'Hello! ROS2 is fun'
+
+This is introduction to creating a simple publisher and subscriber in ROS2. Basically there is one node that listens on a topic on which the other node talks. 
 
 ```{image} _static/gifs/talk-listen.gif
 ---
@@ -22,8 +25,6 @@ align: center
 width: 70%
 ---
 ```
-
-This is introduction to creating a simple publisher and subscriber in ROS2. 
 
 ### Creating ROS2 package:
 ```bash
@@ -89,88 +90,16 @@ ros2 run ros2_is_fun subscriber
 `````{tab-set}
 ````{tab-item} Publisher
 
-```cpp
-#include <chrono>       // for std::chrono (time utilities)
-#include <functional>   // for std::bind
-
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
-
-
-class PublisherNode : public rclcpp::Node
-{
-    public:
-        PublisherNode() : Node("publisher_node")
-        {
-            count_ = 0;
-            publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
-            timer_ = this->create_wall_timer(
-                std::chrono::milliseconds(1000),
-                std::bind(&PublisherNode::timer_callback, this)
-            );
-        }
-    private:
-        void timer_callback()
-        {
-            auto message = std_msgs::msg::String();
-            message.data = "(" + std::to_string(count_++) + ") Hello! ROS2 is fun";
-            RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-            publisher_->publish(message);
-        }
-        rclcpp::TimerBase::SharedPtr timer_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-        size_t count_;
-};
-
-int main(int argc, char **argv)
-{
-  rclcpp::init(argc, argv);
-  std::shared_ptr<PublisherNode> node = std::make_shared<PublisherNode>();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
-}
-
+```{literalinclude} ../ros2_ws/src/ros2_is_fun/src/publisher.cpp
+:language: cpp
 ```
 
 ````
 
 ````{tab-item} Subscriber
 
-```cpp
-#include <functional>   // for std::bind
-
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
-
-using std::placeholders::_1;
-
-class SubscriberNode : public rclcpp::Node
-{
-    public:
-        SubscriberNode() : Node("subscriber_node")
-        {
-            subscription_ = this->create_subscription<std_msgs::msg::String>(
-                "topic", 10, std::bind(&SubscriberNode::topic_callback, this, _1)
-            );
-        }
-    private:
-        void topic_callback(const std_msgs::msg::String::SharedPtr message)
-        {
-            RCLCPP_INFO(this->get_logger(), "Msg Rcvd: '%s'", message->data.c_str());
-        }
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-};
-
-int main(int argc, char **argv)
-{
-  rclcpp::init(argc, argv);
-  std::shared_ptr<SubscriberNode> node = std::make_shared<SubscriberNode>();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
-}
-
+```{literalinclude} ../ros2_ws/src/ros2_is_fun/src/subscriber.cpp
+:language: cpp
 ```
 
 ````
@@ -191,7 +120,7 @@ This part involves using laser sensors to scan the environment and visualize the
 
 ### Pre-requisites
 
-I have used `turtlebot3_burger` as the robot model, and [`dynamic_world`](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world) as the world.
+I have used `turtlebot3_burger` as the robot model, and [`dynamic_world`](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world) as a model for the world.
 
 #### Environment Setup
 
@@ -215,21 +144,22 @@ export GAZEBO_MODEL_PATH=/home/ros2_ws/src/jde_ros2_asgn/models:$GAZEBO_MODEL_PA
 
 To view the Laser Scans we need atleast 4 nodes:
 
-**Gazebo** - The simulation environment.
+1. **Gazebo** - The simulation environment.
 ```
 gazebo $(ros2 pkg prefix --share jde_ros2_asgn)/worlds/dynamic_world.world
 ```
 
-**Robot State Publisher** - To broadcast the state of the robot to the [tf2](https://wiki.ros.org/tf2) transform library.
+2. **Robot State Publisher** - To broadcast the state of the robot to the [tf2](https://wiki.ros.org/tf2) transform library.
 ```
 ros2 run robot_state_publisher robot_state_publisher $(ros2 pkg prefix --share turtlebot3_description)/urdf/turtlebot3_burger.urdf
 ```
 
-**Teleop Twist Keyboard** - The title is self-explanatory.
+3. **Teleop Twist Keyboard** - The title is self-explanatory.
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-**RViz2** - ROS vizualtion tool
+
+4. **RViz2** - ROS vizualtion tool
 ```
 rviz2
 ```
@@ -250,88 +180,37 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ### Source Code
 
 ````{dropdown} laser_scan.launch.py
-```python
-# -*- coding: utf-8 -*-
 
-"""
-Description: TODO
-Author: Muhammed Abdullah Shaikh
-Date Created: Mar 14, 2024
-Last Modified: Mar 14, 2024
-Python Version: 3.8.11
-License: BSD-3-Clause License
-"""
-
-import launch
-from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitution
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.substitutions import FindPackageShare
-from launch_ros.actions import Node
-
-def generate_launch_description():
-
-    pkg_jde_ros2_asgn = FindPackageShare('jde_ros2_asgn')
-    pkg_gazebo_ros  = FindPackageShare('gazebo_ros')
-    pkg_turtlebot3_descrition  = FindPackageShare('turtlebot3_description')
-
-    urdf_path = PathJoinSubstitution([pkg_turtlebot3_descrition, 'urdf', 'turtlebot3_burger.urdf'])
-    world_path = PathJoinSubstitution([pkg_jde_ros2_asgn, 'worlds', 'dynamic_world.world']) 
-    rviz_config_path =  PathJoinSubstitution([pkg_jde_ros2_asgn, 'rviz', 'laser_scan.rviz'])  
-
-    return launch.LaunchDescription([
-        
-        DeclareLaunchArgument(
-            name='world', 
-            default_value=world_path,
-            description='Absolute path to world file'
-        ),
-
-        DeclareLaunchArgument(
-            name='rvizconfig',
-            default_value=rviz_config_path,
-            description='Absolute path to rviz config file'
-        ),
-
-        DeclareLaunchArgument(
-            name='use_sim_time',
-            default_value='false',
-            description='Use simulation (Gazebo) clock if true'
-        ),
-
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                PathJoinSubstitution([pkg_gazebo_ros, 'launch', 'gzserver.launch.py'])
-            ),
-            launch_arguments={'world': LaunchConfiguration('world')}.items(),
-        ),
-
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                 PathJoinSubstitution([pkg_gazebo_ros, 'launch','gzclient.launch.py'])
-            ),
-        ),
-
-        Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time', default='false')}],
-            arguments=[urdf_path]
-        ),
-        
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', LaunchConfiguration('rvizconfig')],
-        ),
-
-    ])
+```{literalinclude} ../ros2_ws/src/jde_ros2_asgn/launch/laser_scan.launch.py
+:language: python
 ```
+
 ````
 
-### Use of AI
+## ROS2 Navigation2
+
+In simple terms we want our robot to move from point A to point B. But first, we need to know where the robot is (i.e. localization) and where are points A and B (i.e. mapping).
+
+```{raw} html
+<p class="centered">
+  <video width="100%" autoplay muted loop>
+    <source src="_static/mapping(my_cafe).mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p>
+```
+
+### Background
+
+For *mapping*, I have used `slam_toolbox` package, to help estimate the robot position and create the map of the world.
+
+Once a map is available we need to *localize*, which is done by creating a transform chain `map -> odom -> base_link` (Oh the errors here are painful!!!). We will use [tf2](https://docs.ros.org/en/foxy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html) transform library to do that.
+
+Now, what left is navigation.
+
+### Creating the Map
+
+## Use of AI
 
 Why add this section? Because I read a discussion where [@jmplaza](https://github.com/jmplaza) mentioned how selection process is more rigorous in these ChatGPT times.
 <br>
@@ -342,11 +221,18 @@ Also, AI is still not very good at debugging ROS errors.
 I have included the reveleant resources I used during this challenge.
 
 
-### References
+## References
 
 * ROS2 Foxy Tutorials: [Writing a simple publisher and subscriber (C++)](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html)
 * `std::bind` function in C++: [Bind Function and Placeholders in C++](https://www.geeksforgeeks.org/bind-function-placeholders-c/)
 * Gazebo not showing my models: [include a model which is not in default path](https://answers.gazebosim.org/question/24935/how-to-include-a-model-which-is-not-in-default-path/#:~:text=You%20can%20check%20the%20current%20value%20of%20GAZEBO_MODEL_PATH,them%20using%20%3A%20export%20GAZEBO_MODEL_PATH%3D%24GAZEBO_MODEL_PATH%3A%3Cpath%20to%20your%20model%3E)
+* Slow Colcon Build: [`colcon build` on OSX is orders of magnitude slower than direct `make`](https://github.com/colcon/colcon-core/issues/193)
 * Dynamic World Model: [Dataset-of-Gazebo-Worlds-Models-and-Maps](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world)
-* View URDF in Gazebo: [URDF](https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/URDF-Main.html) & [Tutorial: Using a URDF in Gazebo](https://classic.gazebosim.org/tutorials?tut=ros_urdf)
+* View URDF in Gazebo: [foxy/Tutorials/Intermediate/URDF](https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/URDF-Main.html) & [URDF in Gazebo](https://classic.gazebosim.org/tutorials?tut=ros_urdf)
+* Saving Maps [answers.ros.org/timeout error while saving map](https://answers.ros.org/question/379565/timeout-error-while-saving-map/)
+* ROS & Docker: [Docker Commands](https://github.com/noshluk2/ros1_wiki/blob/main/docker/commands.md)
+* ROS2 TurtleBot3: [ros2_turtlebot3
+](https://github.com/twming/ros2_turtlebot3)
 * Racecar URDF: [mit-racecar/racecar_gazebo](https://github.com/mit-racecar/racecar_gazebo/blob/master/racecar_description/urdf/racecar.xacro)  
+* Sahayak-V3: [IvLabs/Sahayak-v3](https://github.com/IvLabs/Sahayak-v3)
+* Notes from courses done: [ROS2 (Foxy-Humble) For Beginners I](https://www.udemy.com/course/ros2-how-to) & [ros-essentials](https://www.udemy.com/course/ros-essentials/)
