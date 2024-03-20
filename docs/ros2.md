@@ -210,6 +210,62 @@ Now, what left is navigation.
 
 ### Creating the Map
 
+We will launch the slam tool box, create a gazeo simulation world, visualize the map in rviz2 and teleop the robot.
+
+```bash
+ros2 launch slam_toolbox online_async_launch.py
+ros2 launch jde_ros2_asgn navingation_tb3.launch.py
+rviz2 -d $(ros2 pkg prefix --share jde_ros2_asgn)/rviz/mapping.rviz
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+Once, the mapping is done, we will save it using `nav2_map_server`.
+```bash
+ros2 run nav2_map_server map_saver_cli -f src/jde_ros2_asgn/maps/my_cafe --ros-args -p save_map_timeout:=10000
+```
+
+### Waypoint Navigation
+
+I have created a launch file to start all the required nodes, however I have been facing issue when `nav2_bringup` is lanuched using the same launch file. Hence, we will use additional terminal to launch it.
+
+```bash
+ros2 launch jde_ros2_asgn navigation_tb3.launch.py
+ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True autostart:=True map:=/home/ros2_ws/src/jde_ros2_asgn/maps/my_cafe.yaml
+ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz
+```
+Rest is shown in the video.
+
+## [If I only had more time.](https://getyarn.io/yarn-clip/da763d8d-f2bb-4f9a-8ddc-6211e6f26d68)
+
+<!-- 
+```{raw} html
+<div class="centered">
+  <iframe src="https://getyarn.io/yarn-clip/da763d8d-f2bb-4f9a-8ddc-6211e6f26d68/embed?autoplay=False&responsive=False">
+  </iframe>
+</div>
+``` 
+-->
+
+I used up ~1.5 weeks of time for the following to work. Why? Because the challenge said "*(or any other robot if you wish to).*"
+
+The issues mentioned were not the limitation, but the time was. Hence I then decided to move forward with the TurtleBot3. 
+
+ <!-- TODO: Racecar gif  and map gif -->
+
+This is racecar model taken from [mit-racecar](https://github.com/mit-racecar) which I guess is used for labs in [Robotics: Science and Systems (MIT Course)](https://github.com/mit-rss/intro_to_ros).
+
+The issues I faced:
+* Spawning the robot URDF in Gazebo. (I beleive version issues or my skill isssues.)
+* The package was written using ROS kinetic.
+* The racecar is Ackermann-steering Robot, and this was my first time working with ackermann steering.
+
+The other candidate robot model I had in mid was [Sahayak-v3](https://www.ivlabs.in/sahayak---an-autonomous-covid-aid-bot2.html) developed at [IvLabs](https://www.ivlabs.in/).
+
+```{raw} html
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/64685403/132857785-d6f70385-3a5a-43d3-9c87-5cd9a9a209a8.gif" width="50%">
+</p>
+```
+
 ## Use of AI
 
 Why add this section? Because I read a discussion where [@jmplaza](https://github.com/jmplaza) mentioned how selection process is more rigorous in these ChatGPT times.

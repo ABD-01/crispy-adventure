@@ -13,6 +13,7 @@ hidden:
 
 Home <self>
 Python <python>
+C++ <cpp>
 ROS2 <ros2>
 ```
 ## Introduction
