@@ -8,4 +8,4 @@ Anyways, this was my idea:
 
 1. For all the entires, use DFS.
 2. But we don't stop on finding the exit, and keep on continuing the DFS for other opening and other paths as well.
-3. Loop through all the entries and select the one wil longeest depth.
+3. Loop through all the entries and select the one wil longest depth.

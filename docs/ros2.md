@@ -2,6 +2,11 @@
 
 This is my solution to the [ROS2 Challenge](_static/GSoC-2024%20ROS2%20test.pdf) to show my understanding of ROS2.
 
+I have used Ubuntu:Focal docker image and source installed Ros2 Foxy for these tasks.
+```
+docker pull ubuntu:focal
+```
+
 <!--
 :::{toctree}
 ---
@@ -83,6 +88,13 @@ ros2 run ros2_is_fun publisher
 ros2 run ros2_is_fun subscriber
 ```
 
+```{image} _static/pub-sub.webp
+---
+width: 100%
+alt: Pub-Sub
+align: center
+---
+```
 
 ### Source Code
 
@@ -110,7 +122,7 @@ ros2 run ros2_is_fun subscriber
 
 ```{image} _static/gifs/Jack_Jack_Laser_Vision.webp
 ---
-alt: talker-listener
+alt: Jack Jack Laser
 align: center
 width: 70%
 ---
@@ -120,7 +132,7 @@ This part involves using laser sensors to scan the environment and visualize the
 
 ### Pre-requisites
 
-I have used `turtlebot3_burger` as the robot model, and [`dynamic_world`](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world) as a model for the world.
+I have used [`turtlebot3_burger`](https://github.com/ROBOTIS-GIT/turtlebot3/blob/foxy-devel/turtlebot3_description/urdf/turtlebot3_burger.urdf) as the robot model, and [`dynamic_world`](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world) as a model for the world.
 
 #### Environment Setup
 
@@ -177,6 +189,15 @@ and
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
+```{raw} html
+<p class="centered">
+  <video width="100%" autoplay muted loop>
+    <source src="_static/laser_scan.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p>
+```
+
 ### Source Code
 
 ````{dropdown} laser_scan.launch.py
@@ -191,13 +212,12 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 In simple terms we want our robot to move from point A to point B. But first, we need to know where the robot is (i.e. localization) and where are points A and B (i.e. mapping).
 
-```{raw} html
-<p class="centered">
-  <video width="100%" autoplay muted loop>
-    <source src="_static/mapping(my_cafe).mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</p>
+```{image} _static/gifs/robot_city.gif
+---
+alt: You Go To Robot City
+align: center
+width: 70%
+---
 ```
 
 ### Background
@@ -221,6 +241,15 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 Once, the mapping is done, we will save it using `nav2_map_server`.
 ```bash
 ros2 run nav2_map_server map_saver_cli -f src/jde_ros2_asgn/maps/my_cafe --ros-args -p save_map_timeout:=10000
+```
+
+```{raw} html
+<p class="centered">
+  <video width="100%" autoplay muted loop>
+    <source src="_static/mapping(my_cafe).mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p>
 ```
 
 ### Waypoint Navigation
@@ -249,20 +278,26 @@ I used up ~1.5 weeks of time for the following to work. Why? Because the challen
 
 The issues mentioned were not the limitation, but the time was. Hence I then decided to move forward with the TurtleBot3. 
 
- <!-- TODO: Racecar gif  and map gif -->
+```{image} _static/racecar-tunnel.webp
+---
+alt: Racecar and Tunnel World
+align: center
+width: 100%
+---
+```
 
-This is racecar model taken from [mit-racecar](https://github.com/mit-racecar) which I guess is used for labs in [Robotics: Science and Systems (MIT Course)](https://github.com/mit-rss/intro_to_ros).
+This is racecar model and tunnel world taken from [mit-racecar](https://github.com/mit-racecar) which I guess is used for labs in [Robotics: Science and Systems (MIT Course)](https://github.com/mit-rss/intro_to_ros).
 
 The issues I faced:
 * Spawning the robot URDF in Gazebo. (I beleive version issues or my skill isssues.)
 * The package was written using ROS kinetic.
 * The racecar is Ackermann-steering Robot, and this was my first time working with ackermann steering.
 
-The other candidate robot model I had in mid was [Sahayak-v3](https://www.ivlabs.in/sahayak---an-autonomous-covid-aid-bot2.html) developed at [IvLabs](https://www.ivlabs.in/).
+The other candidate robot model I had in mind was [Sahayak-v3](https://www.ivlabs.in/sahayak---an-autonomous-covid-aid-bot2.html) developed at [IvLabs](https://www.ivlabs.in/).
 
 ```{raw} html
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/64685403/132857785-d6f70385-3a5a-43d3-9c87-5cd9a9a209a8.gif" width="50%">
+  <img src="https://user-images.githubusercontent.com/64685403/132857785-d6f70385-3a5a-43d3-9c87-5cd9a9a209a8.gif" width="40%">
 </p>
 ```
 
@@ -279,6 +314,7 @@ I have included the reveleant resources I used during this challenge.
 
 ## References
 
+* ROS & Docker: [Docker Commands](https://github.com/noshluk2/ros1_wiki/blob/main/docker/commands.md)
 * ROS2 Foxy Tutorials: [Writing a simple publisher and subscriber (C++)](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html)
 * `std::bind` function in C++: [Bind Function and Placeholders in C++](https://www.geeksforgeeks.org/bind-function-placeholders-c/)
 * Gazebo not showing my models: [include a model which is not in default path](https://answers.gazebosim.org/question/24935/how-to-include-a-model-which-is-not-in-default-path/#:~:text=You%20can%20check%20the%20current%20value%20of%20GAZEBO_MODEL_PATH,them%20using%20%3A%20export%20GAZEBO_MODEL_PATH%3D%24GAZEBO_MODEL_PATH%3A%3Cpath%20to%20your%20model%3E)
@@ -286,7 +322,6 @@ I have included the reveleant resources I used during this challenge.
 * Dynamic World Model: [Dataset-of-Gazebo-Worlds-Models-and-Maps](https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world)
 * View URDF in Gazebo: [foxy/Tutorials/Intermediate/URDF](https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/URDF-Main.html) & [URDF in Gazebo](https://classic.gazebosim.org/tutorials?tut=ros_urdf)
 * Saving Maps [answers.ros.org/timeout error while saving map](https://answers.ros.org/question/379565/timeout-error-while-saving-map/)
-* ROS & Docker: [Docker Commands](https://github.com/noshluk2/ros1_wiki/blob/main/docker/commands.md)
 * ROS2 TurtleBot3: [ros2_turtlebot3
 ](https://github.com/twming/ros2_turtlebot3)
 * Racecar URDF: [mit-racecar/racecar_gazebo](https://github.com/mit-racecar/racecar_gazebo/blob/master/racecar_description/urdf/racecar.xacro)  
