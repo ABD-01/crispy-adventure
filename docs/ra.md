@@ -4,6 +4,12 @@ This is my solution to the [RoboticsAcademy Challenge](_static/GSoC-2024%20Robot
 
 ## Visual Follow Line
 
+```{raw} html
+<div width="100%" align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=Po1TyWtwFuKh3fIw&amp;list=PLm14V2PsCoHSIUe9fpO7Uw2PiDVisftWS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
 This exercise requires a PID controller to drive an F1 car in race circuit. This has 2 parts:
 1. [Computer Vision](#computer-vision)
 2. [Control System](#control-system)
@@ -148,8 +154,14 @@ After finalizing the propotional, integral and differential constants, the out p
 
 ### Simulation
 
-For entire simuation watch the YouTube video.
-<!-- TODO: video -->
+For entire simuation watch the YouTube videos.
+
+```{raw} html
+<div width="100%" align="center">
+<iframe width="49%" src="https://www.youtube.com/embed/ayDQqRfB7KQ?si=4MOnGT5G0ZsAKRTh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="49%" src="https://www.youtube.com/embed/uzrILcWKJwI?si=rs_J8S_AlONXyci4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
 
 Here are few clips showing the performance of the PID path following F1 car.
 
