@@ -2,7 +2,7 @@
 tocdepth: 4
 ---
 
-# JdeRobot GSoC Proposal's documentation!
+# JdeRobot GSoC Proposal
 
 ```{toctree}
 ---

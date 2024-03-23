@@ -7,6 +7,10 @@ I have used Ubuntu:Focal docker image and source installed Ros2 Foxy for these t
 docker pull ubuntu:focal
 ```
 
+```{important}
+I cannot upload another YouTube video for next 24 hours. Upload limit or something. I will upload the video and update this page as soon as the limit expires
+```
+
 <!--
 :::{toctree}
 ---
