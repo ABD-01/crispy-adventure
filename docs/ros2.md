@@ -230,7 +230,7 @@ Now, what left is navigation.
 
 ### Creating the Map
 
-We will launch the slam tool box, create a gazeo simulation world, visualize the map in rviz2 and teleop the robot.
+We will launch the slam tool box, create a gazebo simulation world, visualize the map in rviz2 and teleop the robot.
 
 ```bash
 ros2 launch slam_toolbox online_async_launch.py

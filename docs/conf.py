@@ -42,6 +42,7 @@ myst_enable_extensions = [
     "colon_fence",
     # "attrs_inline", "attrs_block",  # Ref: https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#attributes
     'html_image',
+    "dollarmath",
     ]
 myst_all_links_external = True
 
