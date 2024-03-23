@@ -82,7 +82,7 @@ Enclosed in Green border shows different ROIs, where the white circle is their m
 
 #### Control System
 
-PID controller has been used to make the car follow the line. The distance from the centre is takes as an error and used in feedback loop for the angular and linear velocity.
+PID controller has been used to make the car follow the line. The distance from the centre is takes as an error and used in feedback loop for the angular and linear velocity. The angular velocity uses PID while the linear velocity just uses differential controller. The reason being that the car will run a a fixed speed and slow down near turns.
 
 ##### Ziegler–Nichols
 
@@ -219,6 +219,19 @@ Europcar corner, sharp 75° right turn of Montmelo World
 
 Left-Right Chicane of Montmelo World
 ```
+
+### Source Code
+
+````{dropdown} PID_controller.py
+
+The source code is available on [github](https://github.com/ABD-01/crispy-adventure/tree/master/RoboticsAcademy) but has been encrypted.
+To view the code follow these commands
+```bash
+wget https://raw.githubusercontent.com/ABD-01/crispy-adventure/master/RoboticsAcademy/PID_controller.py.data
+openssl enc -aes-128-cbc -d -a -pbkdf2 -in PID_controller.py.data -out PID_controller.py
+```
+The key to decrypt the file has been provided in the email. 
+````
 
 ## Use of AI and Symmetric Arrays
 

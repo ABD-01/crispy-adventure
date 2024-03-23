@@ -254,7 +254,7 @@
 </section>
 <section id="control-system">
 <h4>Control System<a class="headerlink" href="#control-system" title="Link to this heading">#</a></h4>
-<p>PID controller has been used to make the car follow the line. The distance from the centre is takes as an error and used in feedback loop for the angular and linear velocity.</p>
+<p>PID controller has been used to make the car follow the line. The distance from the centre is takes as an error and used in feedback loop for the angular and linear velocity. The angular velocity uses PID while the linear velocity just uses differential controller. The reason being that the car will run a a fixed speed and slow down near turns.</p>
 <section id="zieglernichols">
 <h5>Ziegler–Nichols<a class="headerlink" href="#zieglernichols" title="Link to this heading">#</a></h5>
 <p>I have used the <a class="reference external" href="https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method">Ziegler–Nichols method</a> for tuning this PID controller.</p>
@@ -377,6 +377,24 @@
 </section>
 </section>
 </section>
+<section id="source-code">
+<h3>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+PID_controller.py<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The source code is available on <a class="reference external" href="https://github.com/ABD-01/crispy-adventure/tree/master/RoboticsAcademy">github</a> but has been encrypted.
+To view the code follow these commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://raw.githubusercontent.com/ABD-01/crispy-adventure/master/RoboticsAcademy/PID_controller.py.data
+openssl<span class="w"> </span>enc<span class="w"> </span>-aes-128-cbc<span class="w"> </span>-d<span class="w"> </span>-a<span class="w"> </span>-pbkdf2<span class="w"> </span>-in<span class="w"> </span>PID_controller.py.data<span class="w"> </span>-out<span class="w"> </span>PID_controller.py
+</pre></div>
+</div>
+<p class="sd-card-text">The key to decrypt the file has been provided in the email.</p>
+</div>
+</details></section>
 </section>
 <section id="use-of-ai-and-symmetric-arrays">
 <h2>Use of AI and Symmetric Arrays<a class="headerlink" href="#use-of-ai-and-symmetric-arrays" title="Link to this heading">#</a></h2>
@@ -494,6 +512,7 @@ Something like this:</p>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#source-code">Source Code</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#use-of-ai-and-symmetric-arrays">Use of AI and Symmetric Arrays</a></li>
