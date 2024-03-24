@@ -1,2 +1,0 @@
-https://tkdocs.com/shipman/canvas.html
-https://tkdocs.com/tutorial/widgets.html#button
