@@ -17,6 +17,13 @@ C++ <cpp>
 ROS2 <ros2>
 RoboticsAcademy <ra>
 ```
+
+```{admonition} PDF Format
+:class: help
+(Not Recommended) View this proposal in pdf format.<br>
+Link: [GSoC Proposal (JdeRobot)](https://drive.google.com/file/d/1YQmR0vaDKLDKZzNUGVIbtTRxqGqb-24e/view?usp=sharing)
+```
+
 ## Introduction
 
 Hi! <img src="_static/Hi.gif" height="1.5em">
