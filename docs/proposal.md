@@ -1,6 +1,6 @@
 # Proposal
 
-**Project Name**: End-to-end autonomous vehicle driving based on text-based instructions: research project regarding Autonomous Driving + LLMs
+**Project Name**: End-to-end autonomous vehicle driving based on text-based instructions.
 
 ## Abstract
 #TODO
@@ -11,9 +11,9 @@ An end-to-end model that drives the vehicle using text-based instructions provid
 
 ## Timeline
 
-|                 **Time**                 | **Tasks**                                                                                                                                                                                   |
-|:----------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|          Community Bonding Week          | * Thoroughly familiarize myself with the code base.<br>* Set up a blog website<br>* Conducting literature survey for the models to use.<br>* Discuss with mentors the project’s groundwork. |
+| **Time**                                 | **Tasks**                                                                                                                                                                                   |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Community Bonding Week                   | * Thoroughly familiarize myself with the code base.<br>* Set up a blog website<br>* Conducting literature survey for the models to use.<br>* Discuss with mentors the project’s groundwork. |
 | Week 1<br>(May 27 - Jun 3)               | # TODO                                                                                                                                                                                      |
 | Week 2 & 3<br>(Jun 3 - 17)               | # TODO                                                                                                                                                                                      |
 | Week 4 & 5<br>(Jun 17 - 30)              | # TODO                                                                                                                                                                                      |
