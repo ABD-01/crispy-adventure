@@ -12,6 +12,7 @@ hidden:
 ---
 
 Home <self>
+Proposal <proposal>
 Python <python>
 C++ <cpp>
 ROS2 <ros2>
@@ -85,6 +86,7 @@ Having GSoC experience with JdeRobot would doubtlessly help my application.
       * [Notes on Flask, WTForms, Protocol Buffers and more…](https://abd-01.github.io/Flask-Protobuf/Notes.html)
    * Links:
       * Website: [abd-01.github.io](https://abd-01.github.io/)
+      * Github: [ABD-01](https://github.com/ABD-01)
       * Twitter: [_m_ABD](https://twitter.com/_m_ABD)
       * LinkedIn: [muhammedabd](https://www.linkedin.com/in/muhammedabd/)
 
