@@ -77,7 +77,7 @@ The result looks this this:
 :alt: Multiple ROIs
 :figclass: sidefigure
 
-Enclosed in Green border shows different ROIs, where the white circle is their moments. Cyan colored Line shows the distance from the center and the Bluw arrows represents the weightage of these distances. 
+Enclosed in Green border shows different ROIs, where the white circle is their moments. Cyan colored Line shows the distance from the center and the Blue arrows represent the weightage of these distances. 
 ```
 
 #### Control System
