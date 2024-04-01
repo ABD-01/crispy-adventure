@@ -210,11 +210,7 @@
 <p><strong>Project Name</strong>: End-to-end autonomous vehicle driving based on text-based instructions.</p>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>#TODO</p>
-</section>
-<section id="deliverables">
-<h2>Deliverables<a class="headerlink" href="#deliverables" title="Link to this heading">#</a></h2>
-<p>An end-to-end model that drives the vehicle using text-based instructions provided by an LLM.</p>
+<p>JdeRobot is an open-source toolkit for developing Robotics applications. Amongst various projects in Behavior Metrics for evaluating DL models’ performance in autonomous driving tasks. In this project, the aim is to integrate a Language Model (LM) system with an end-to-end autonomous driving model. By combining previous knowledge and successful projects, the goal is to enable users to provide text-based commands directly to the vehicle, similar to interacting with a real-life taxi. The project will commence with a focus on simplicity, utilizing models like BERT, and gradually iterating towards more complex architectures.</p>
 </section>
 <section id="timeline">
 <h2>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h2>
@@ -226,35 +222,32 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Community Bonding Week</p></td>
-<td><p>* Thoroughly familiarize myself with the code base.<br>* Set up a blog website<br>* Conducting literature survey for the models to use.<br>* Discuss with mentors the project’s groundwork.</p></td>
+<tr class="row-even"><td><p>Community Bonding Period</p></td>
+<td><p>• Thoroughly familiarize myself with the code base.<br>• Set up a blog website for project documentation and updates.<br>• Conduct a comprehensive literature survey to identify relevant LM architectures and fine-tuning techniques.<br>• Discuss project groundwork and implementation strategies with mentors.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Week 1<br>(May 27 - Jun 3)</p></td>
-<td><p># TODO</p></td>
+<tr class="row-odd"><td><p>Week 1, 2 &amp; 3<br>(May 27 - Jun 17)</p></td>
+<td><p>• Implement a basic NLP-based controller using BERT or a similar LM.<br>• Develop an initial prototype for text-based command input and vehicle control.<br>• Finetuning and training BERT model for generating HighLevelCommands(HLCs).<br>• This will update <a class="reference external" href="https://github.com/TheRoboticsClub/gsoc2023-Meiqi_Zhao/blob/676df573082c0826dba65fe34755cf70767aa144/src/utils/high_level_command.py#L35">get_random_hlc</a> and instead of randomized HLC, text-based HLCs will be produced.</p></td>
 </tr>
-<tr class="row-even"><td><p>Week 2 &amp; 3<br>(Jun 3 - 17)</p></td>
-<td><p># TODO</p></td>
+<tr class="row-even"><td><p>Week 4 &amp; 5<br>(Jun 17 - 30)</p></td>
+<td><p>• Understanding and integrating vision encoders (like <a class="reference external" href="https://github.com/opendilab/LMDrive">LMDrive</a>) for closed-loop control. (The above is open-loop setting)<br>• Study and discuss the feasibility of reproducing other approaches like <a class="reference external" href="https://github.com/wayveai/Driving-with-LLMs">Driving-with-LLMs</a> within the project framework.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Week 4 &amp; 5<br>(Jun 17 - 30)</p></td>
-<td><p># TODO</p></td>
+<tr class="row-odd"><td><p>Evaluation Week 6 &amp; 7<br>(Jul 1 - 12)</p></td>
+<td><p>• Train the integrated system on the LMDrive <a class="reference external" href="https://huggingface.co/datasets/OpenDILabCommunity/LMDrive">dataset</a> for performance evaluation.<br>• Explore the possibility of creating a custom dataset using <a class="reference external" href="https://github.com/TheRoboticsClub/gsoc2023-Meiqi_Zhao/blob/main/src/data_collector.py">data_collector.py</a> to further enhance training data diversity and model robustness.<br>• Meet the Phase 1 Evaluation deadline.</p></td>
 </tr>
-<tr class="row-even"><td><p>Evaluation<br>Week 6 &amp; 7<br>(Jul 1 - 12)</p></td>
-<td><p># TODO</p></td>
-</tr>
-<tr class="row-odd"><td><p>Jul 12</p></td>
+<tr class="row-even"><td><p>Jul 12</p></td>
 <td><p>Phase 1 Evaluation deadline</p></td>
 </tr>
-<tr class="row-even"><td><p>Week 8 &amp; 9<br>(Jul 15 - 29)</p></td>
+<tr class="row-odd"><td><p>Week 8 &amp; 9<br>(Jul 15 - 29)</p></td>
+<td><p>• Explore the use of Vision-Language Models (VLMs) like <a class="reference external" href="https://llava-vl.github.io/">LLaVA</a> to improve the system’s understanding of visual inputs.<br>• Investigate extending the evaluation metrics using Visual Question Answering (VQA) techniques, such as <a class="reference external" href="https://github.com/wayveai/LingoQA">LingoQA</a>, to enhance system comprehension and response accuracy.</p></td>
+</tr>
+<tr class="row-even"><td><p>Week 10 &amp; 11<br>(Jul 29 - Aug 12)</p></td>
 <td><p># TODO</p></td>
 </tr>
-<tr class="row-odd"><td><p>Week 10 &amp; 11<br>(Jul 29 - Aug 12)</p></td>
-<td><p># TODO</p></td>
+<tr class="row-odd"><td><p>Week 12 &amp; 13<br>(Aug 12 - 26)</p></td>
+<td><p>• Finalize project deliverables, including code, documentation, and any additional materials.<br>• Conduct thorough testing and validation of the integrated system to ensure reliability and performance consistency.<br>• Prepare the final report summarizing project outcomes, challenges faced, solutions implemented, and future directions for potential improvements.</p></td>
 </tr>
-<tr class="row-even"><td><p>Week 12 &amp; 13<br>(Aug 12 - 26)</p></td>
-<td><p># TODO</p></td>
-</tr>
-<tr class="row-odd"><td><p>Week 14 &amp; 15</p></td>
-<td><p>Mostly Buffer Period</p></td>
+<tr class="row-even"><td><p>Week 14 &amp; 15</p></td>
+<td><p>• Buffer period for any unexpected delays or additional tasks.<br>• Finalize project deliverables and ensure all code and documentation are properly organized and submitted.</p></td>
 </tr>
 </tbody>
 </table>
@@ -326,7 +319,6 @@
             <ul>
 <li><a class="reference internal" href="#">Proposal</a><ul>
 <li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#deliverables">Deliverables</a></li>
 <li><a class="reference internal" href="#timeline">Timeline</a></li>
 </ul>
 </li>
